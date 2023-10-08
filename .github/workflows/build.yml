@@ -57,8 +57,3 @@ jobs:
             SD_WEBUI_REF=${{ env.SD_WEBUI_REF }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - uses: actions/delete-package-versions@v4
-        with:
-          package-name: stable-diffusion-webui/${{ matrix.type }}
-          package-type: container
-          delete-only-untagged-versions: true
