@@ -14,6 +14,9 @@ jobs:
   build:
     name: Build Image
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        type: [minimal, full]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,7 +24,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository_owner }}/stable-diffusion-webui/full
+          images: ghcr.io/${{ github.repository_owner }}/stable-diffusion-webui/${{ matrix.type }}
           tags: |
             type=raw,priority=1000,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
             type=semver,pattern={{version}},value=${{ env.SD_WEBUI_REF }},enable=${{ github.ref == 'refs/heads/main' }}
@@ -41,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: full.Dockerfile
+          file: ${{ matrix.type }}.Dockerfile
           pull: true
           push: ${{ github.secret_source == 'Actions' && steps.meta.outputs.tags != '' }}
           platforms: linux/amd64
@@ -52,15 +55,8 @@ jobs:
             SD_WEBUI_REF=${{ env.SD_WEBUI_REF }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-  cleanup:
-    name: Cleanup
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.ref_name == 'main'
-    steps:
       - uses: actions/delete-package-versions@v4
         with:
-          package-name: stable-diffusion-webui/full
+          package-name: stable-diffusion-webui/${{ matrix.type }}
           package-type: container
           delete-only-untagged-versions: true
