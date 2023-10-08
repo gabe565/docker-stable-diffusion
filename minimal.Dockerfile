@@ -12,7 +12,7 @@ ARG GID=$UID
 RUN <<EOT
     set -eux
     groupadd --gid="$GID" "$USERNAME"
-    useradd --system --uid="$UID" --gid="$GID" "$USERNAME"
+    useradd --create-home --uid="$UID" --gid="$GID" "$USERNAME"
 
     apt-get update
     apt-get install -y git build-essential libgl1 libglib2.0-0
