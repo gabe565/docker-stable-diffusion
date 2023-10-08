@@ -26,5 +26,6 @@ RUN <<EOT
     chown -R sd-webui:sd-webui /app
 EOT
 USER sd-webui
+ENV venv_dir=/data/venv
 
 WORKDIR /app
