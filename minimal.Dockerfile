@@ -15,7 +15,7 @@ RUN <<EOT
     useradd --create-home --uid="$UID" --gid="$GID" "$USERNAME"
 
     apt-get update
-    apt-get install -y git build-essential libgl1 libglib2.0-0
+    apt-get install -y git build-essential libgl1 libglib2.0-0 libgoogle-perftools-dev
     rm -rf /var/lib/apt/lists/*
 
     git clone -q \
@@ -26,8 +26,9 @@ RUN <<EOT
 
     chown -R sd-webui:sd-webui /app
 EOT
-USER sd-webui
 ENV venv_dir=/data/venv
+ENV LD_PRELOAD=libtcmalloc.so
+USER sd-webui
 
 WORKDIR /app
 CMD ["./webui.sh", "--listen", "--data-dir=/data", "--medvram", "--xformers", "--enable-insecure-extension-access"]
