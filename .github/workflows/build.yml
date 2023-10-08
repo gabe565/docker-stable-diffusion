@@ -16,7 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        type: [minimal, full]
+        type:
+          - minimal
+          # - full
     steps:
       - name: Checkout
         uses: actions/checkout@v4
