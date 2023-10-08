@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  app:
+    image: "ghcr.io/gabe565/stable-diffusion-webui"
+    build:
+      context: "."
+      dockerfile: "full.Dockerfile"
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./data:/data
+      - ./outputs:/app/outputs
