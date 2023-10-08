@@ -31,4 +31,5 @@ ENV LD_PRELOAD=libtcmalloc.so
 USER sd-webui
 
 WORKDIR /app
-CMD ["./webui.sh", "--listen", "--data-dir=/data", "--medvram", "--xformers", "--enable-insecure-extension-access"]
+ENV COMMANDLINE_ARGS="--listen --data-dir=/data --enable-insecure-extension-access"
+CMD ["./webui.sh", "--medvram", "--xformers"]

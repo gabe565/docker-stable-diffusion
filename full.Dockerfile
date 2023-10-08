@@ -39,4 +39,5 @@ EOT
 
 USER sd-webui
 EXPOSE 7860
-CMD ["./webui.sh", "--listen", "--data-dir=/data", "--medvram", "--xformers", "--enable-insecure-extension-access"]
+ENV COMMANDLINE_ARGS="--listen --data-dir=/data --enable-insecure-extension-access"
+CMD ["./webui.sh", "--medvram", "--xformers"]
