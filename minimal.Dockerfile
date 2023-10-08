@@ -29,3 +29,4 @@ USER sd-webui
 ENV venv_dir=/data/venv
 
 WORKDIR /app
+CMD ["./webui.sh", "--listen", "--data-dir=/data", "--medvram", "--xformers", "--enable-insecure-extension-access"]
