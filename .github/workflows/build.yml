@@ -16,6 +16,9 @@ jobs:
           - name: webui
             repo: AUTOMATIC1111/stable-diffusion-webui
             ref: v1.6.0
+          - name: comfyui
+            repo: comfyanonymous/ComfyUI
+            ref: master
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -1,1 +1,10 @@
-**
+*.Dockerfile
+.dockerignore
+.git/
+.github/
+.gitignore
+README.md
+data/
+docker-compose.yml
+outputs/
+renovate.json
