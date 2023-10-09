@@ -27,7 +27,6 @@ RUN <<EOT
     chown -R sd:sd /app
 EOT
 ENV venv_dir=/data/venv
-ENV LD_PRELOAD=libtcmalloc.so
 ENV GRADIO_ANALYTICS_ENABLED=False
 USER sd
 
