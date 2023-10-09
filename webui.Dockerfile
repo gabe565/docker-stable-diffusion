@@ -28,6 +28,7 @@ RUN <<EOT
 EOT
 ENV venv_dir=/data/venv
 ENV LD_PRELOAD=libtcmalloc.so
+ENV GRADIO_ANALYTICS_ENABLED=False
 USER sd
 
 WORKDIR /app
