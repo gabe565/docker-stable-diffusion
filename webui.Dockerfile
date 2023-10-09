@@ -32,5 +32,5 @@ ENV GRADIO_ANALYTICS_ENABLED=False
 USER sd
 
 WORKDIR /app
-ENV COMMANDLINE_ARGS="--listen --data-dir=/data --enable-insecure-extension-access --disable-console-progressbars"
-CMD ["./webui.sh", "--medvram", "--xformers"]
+ENTRYPOINT ["./webui.sh", "--listen", "--data-dir=/data", "--enable-insecure-extension-access", "--disable-console-progressbars"]
+CMD ["--medvram", "--xformers"]
