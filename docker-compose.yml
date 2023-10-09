@@ -3,9 +3,7 @@ version: "3.9"
 services:
   app:
     image: "ghcr.io/gabe565/stable-diffusion-webui/minimal"
-    build:
-      context: "."
-      dockerfile: "webui.Dockerfile"
+    build: "webui"
     ports:
       - "7860:7860"
     volumes:

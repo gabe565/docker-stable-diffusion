@@ -27,10 +27,10 @@ RUN <<EOT
 
     chown -R sd:sd /app
 EOT
-COPY comfyui.sh /entrypoint
-RUN chmod +x /entrypoint
+COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 
 USER sd
 EXPOSE 8188
-ENTRYPOINT ["/entrypoint"]
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["--listen", "--output-directory=/data/output"]

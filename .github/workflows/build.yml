@@ -43,8 +43,7 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: ${{ matrix.name }}.Dockerfile
+          context: ${{ matrix.name }}
           pull: true
           push: ${{ github.secret_source == 'Actions' && steps.meta.outputs.tags != '' }}
           platforms: linux/amd64
