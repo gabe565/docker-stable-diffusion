@@ -20,10 +20,10 @@ RUN <<EOT
     rm -rf /var/lib/apt/lists/*
 
     git clone -q \
-       --config=advice.detachedHead=false \
-       --branch="$REF" \
-       --depth=1 \
-       "https://github.com/$REPO.git" .
+      --config=advice.detachedHead=false \
+      --branch="$REF" \
+      --depth=1 \
+      "https://github.com/$REPO.git" .
 
     chown -R sd:sd /app
 EOT
