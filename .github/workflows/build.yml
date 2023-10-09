@@ -2,10 +2,6 @@ name: Build
 
 on: push
 
-env:
-  SD_WEBUI_REPO: AUTOMATIC1111/stable-diffusion-webui
-  SD_WEBUI_REF: v1.6.0
-
 permissions:
   contents: read
   packages: write
@@ -16,8 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        type:
-          - minimal
+        include:
+          - name: webui
+            repo: AUTOMATIC1111/stable-diffusion-webui
+            ref: v1.6.0
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,12 +23,12 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository_owner }}/stable-diffusion-webui/${{ matrix.type }}
+          images: ghcr.io/${{ github.repository_owner }}/stable-diffusion/${{ matrix.name }}
           tags: |
             type=raw,priority=1000,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
-            type=semver,pattern={{version}},value=${{ env.SD_WEBUI_REF }},enable=${{ github.ref == 'refs/heads/main' }}
-            type=semver,pattern={{major}}.{{minor}},value=${{ env.SD_WEBUI_REF }},enable=${{ github.ref == 'refs/heads/main' }}
-            type=semver,pattern={{major}},value=${{ env.SD_WEBUI_REF }},enable=${{ github.ref == 'refs/heads/main' }}
+            type=semver,pattern={{version}},value=${{ matrix.ref }},enable=${{ github.ref == 'refs/heads/main' }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ matrix.ref }},enable=${{ github.ref == 'refs/heads/main' }}
+            type=semver,pattern={{major}},value=${{ matrix.ref }},enable=${{ github.ref == 'refs/heads/main' }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Buildx
@@ -45,14 +43,14 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ${{ matrix.type }}.Dockerfile
+          file: ${{ matrix.name }}.Dockerfile
           pull: true
           push: ${{ github.secret_source == 'Actions' && steps.meta.outputs.tags != '' }}
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            SD_WEBUI_REPO=${{ env.SD_WEBUI_REPO }}
-            SD_WEBUI_REF=${{ env.SD_WEBUI_REF }}
+            REPO=${{ matrix.repo }}
+            REF=${{ matrix.ref }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

@@ -3,10 +3,10 @@
 FROM python:3.10.11-slim
 WORKDIR /app
 
-ARG SD_WEBUI_REPO=AUTOMATIC1111/stable-diffusion-webui
-ARG SD_WEBUI_REF=v1.6.0
+ARG REPO=AUTOMATIC1111/stable-diffusion-webui
+ARG REF=v1.6.0
 
-ARG USERNAME=sd-webui
+ARG USERNAME=sd
 ARG UID=1000
 ARG GID=$UID
 RUN <<EOT
@@ -20,15 +20,15 @@ RUN <<EOT
 
     git clone -q \
        --config=advice.detachedHead=false \
-       --branch="$SD_WEBUI_REF" \
+       --branch="$REF" \
        --depth=1 \
-       "https://github.com/$SD_WEBUI_REPO.git" .
+       "https://github.com/$REPO.git" .
 
-    chown -R sd-webui:sd-webui /app
+    chown -R sd:sd /app
 EOT
 ENV venv_dir=/data/venv
 ENV LD_PRELOAD=libtcmalloc.so
-USER sd-webui
+USER sd
 
 WORKDIR /app
 ENV COMMANDLINE_ARGS="--listen --data-dir=/data --enable-insecure-extension-access --disable-console-progressbars"

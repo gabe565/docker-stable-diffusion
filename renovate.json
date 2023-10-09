@@ -7,8 +7,8 @@
     {
       "fileMatch": ["Dockerfile", "^\\.github/workflows/", "README.md"],
       "matchStrings": [
-        "\\s*SD_WEBUI_REPO: +(?<depName>.+)\\n\\s*SD_WEBUI_REF: +(?<currentValue>.+)",
-        "ARG +SD_WEBUI_REPO=(?<depName>.+)\\nARG +SD_WEBUI_REF=(?<currentValue>.+)",
+        "\\s*REPO: +(?<depName>.+)\\n\\s*REF: +(?<currentValue>.+)",
+        "ARG +REPO=(?<depName>.+)\\nARG +REF=(?<currentValue>.+)",
         "<!--renovate repo=(?<depName>.+) -->\\n.*\\/Version-(?<currentValue>.+?)-"
       ],
       "datasourceTemplate": "github-releases"

@@ -5,7 +5,7 @@ services:
     image: "ghcr.io/gabe565/stable-diffusion-webui/minimal"
     build:
       context: "."
-      dockerfile: "minimal.Dockerfile"
+      dockerfile: "webui.Dockerfile"
     ports:
       - "7860:7860"
     volumes:
