@@ -16,7 +16,7 @@ RUN <<EOT
     useradd --create-home --uid="$UID" --gid="$GID" "$USERNAME"
 
     apt-get update
-    apt-get install -y git build-essential libgl1 libglib2.0-0
+    apt-get install -y git build-essential libgl1 libglib2.0-0 wget
 
     git clone -q \
        --config=advice.detachedHead=false \

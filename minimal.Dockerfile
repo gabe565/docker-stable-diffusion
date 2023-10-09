@@ -15,7 +15,7 @@ RUN <<EOT
     useradd --create-home --uid="$UID" --gid="$GID" "$USERNAME"
 
     apt-get update
-    apt-get install -y git build-essential libgl1 libglib2.0-0 libgoogle-perftools-dev
+    apt-get install -y git build-essential libgl1 libglib2.0-0 libgoogle-perftools-dev wget
     rm -rf /var/lib/apt/lists/*
 
     git clone -q \
