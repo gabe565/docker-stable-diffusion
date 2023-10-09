@@ -31,5 +31,6 @@ COPY comfyui.sh /entrypoint
 RUN chmod +x /entrypoint
 
 USER sd
+EXPOSE 8188
 ENTRYPOINT ["/entrypoint"]
 CMD ["--listen", "--output-directory=/data/output"]
