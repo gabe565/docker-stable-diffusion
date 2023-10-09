@@ -29,8 +29,9 @@ RUN <<EOT
 EOT
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
+COPY extra_model_paths.yaml /
 
 USER sd
 EXPOSE 8188
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["--listen", "--output-directory=/data/output"]
+CMD ["--listen", "--output-directory=/data/output", "--extra-model-paths-config=/extra_model_paths.yaml"]
