@@ -31,6 +31,5 @@ ENV venv_dir=/data/venv
 ENV GRADIO_ANALYTICS_ENABLED=False
 USER sd
 
-WORKDIR /app
 ENTRYPOINT ["./webui.sh", "--listen", "--data-dir=/data", "--enable-insecure-extension-access", "--disable-console-progressbars"]
 CMD ["--medvram", "--xformers"]
