@@ -34,4 +34,4 @@ COPY extra_model_paths.yaml /
 USER sd
 EXPOSE 8188
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["--listen", "--output-directory=/data/output", "--extra-model-paths-config=/extra_model_paths.yaml"]
+CMD ["--listen", "--output-directory=/data/outputs", "--extra-model-paths-config=/extra_model_paths.yaml"]
