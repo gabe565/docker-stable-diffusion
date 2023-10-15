@@ -25,6 +25,7 @@ RUN <<EOT
       --depth=1 \
       "https://github.com/$REPO.git" .
 
+    mkdir tmp
     chown -R sd:sd .
 EOT
 ENV venv_dir=/data/venv
