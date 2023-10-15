@@ -25,7 +25,7 @@ RUN <<EOT
       --depth=1 \
       "https://github.com/$REPO.git" .
 
-    chown -R sd:sd /app
+    chown -R sd:sd .
 EOT
 ENV venv_dir=/data/venv
 ENV GRADIO_ANALYTICS_ENABLED=False

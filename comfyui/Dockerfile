@@ -25,7 +25,7 @@ RUN <<EOT
       --depth=1 \
       "https://github.com/$REPO.git" .
 
-    chown -R sd:sd /app
+    chown -R sd:sd .
 EOT
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
