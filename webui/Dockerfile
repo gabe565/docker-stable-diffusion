@@ -1,6 +1,6 @@
 #syntax=docker/dockerfile:1.6
 
-FROM python:3.10.11-slim
+FROM python:3.12.1-slim
 WORKDIR /app
 
 ARG REPO=AUTOMATIC1111/stable-diffusion-webui
