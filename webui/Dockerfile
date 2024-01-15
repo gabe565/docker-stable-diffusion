@@ -4,7 +4,7 @@ FROM python:3.10.11-slim
 WORKDIR /app
 
 ARG REPO=AUTOMATIC1111/stable-diffusion-webui
-ARG REF=v1.6.0
+ARG REF=v1.7.0
 
 ARG USERNAME=sd
 ARG UID=1000
