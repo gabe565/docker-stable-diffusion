@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   build:
-    name: Build Image
+    name: Build Image (${{ matrix.name }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
