@@ -13,5 +13,12 @@
       ],
       "datasourceTemplate": "github-releases"
     }
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchDepNames": ["python"],
+      "allowedVersions": "< 3.11"
+    }
   ]
 }
