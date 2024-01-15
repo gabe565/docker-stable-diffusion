@@ -7,7 +7,7 @@
     {
       "fileMatch": ["Dockerfile", "^\\.github/workflows/", "README.md"],
       "matchStrings": [
-        "\\s*REPO: +(?<depName>.+)\\n\\s*REF: +(?<currentValue>.+)",
+        "\\s*repo: +(?<depName>.+)\\n\\s*ref: +(?<currentValue>.+)",
         "ARG +REPO=(?<depName>.+)\\nARG +REF=(?<currentValue>.+)",
         "<!--renovate repo=(?<depName>.+) -->\\n.*\\/Version-(?<currentValue>.+?)-"
       ],
