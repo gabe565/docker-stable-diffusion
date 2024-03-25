@@ -16,7 +16,7 @@ RUN <<EOT
 
     apt-get update
     apt-get install -y --no-install-recommends \
-      git build-essential libgl1 libglib2.0-0 libtcmalloc-minimal4 wget
+      git build-essential libgl1 libglib2.0-0 libtcmalloc-minimal4 wget bc
     rm -rf /var/lib/apt/lists/*
 
     git clone -q \
