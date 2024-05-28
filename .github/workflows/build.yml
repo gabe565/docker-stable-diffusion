@@ -15,7 +15,7 @@ jobs:
         include:
           - name: webui
             repo: AUTOMATIC1111/stable-diffusion-webui
-            ref: v1.9.3
+            ref: v1.9.4
           - name: comfyui
             repo: comfyanonymous/ComfyUI
             ref: master
