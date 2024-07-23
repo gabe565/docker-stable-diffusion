@@ -14,9 +14,13 @@ jobs:
       matrix:
         include:
           - name: webui
+            pretty_name: Stable Diffusion Web UI
+            license: AGPL-3.0
             repo: AUTOMATIC1111/stable-diffusion-webui
             ref: v1.9.4
           - name: comfyui
+            pretty_name: ComfyUI
+            license: GPL-3.0
             repo: comfyanonymous/ComfyUI
             ref: master
     steps:
@@ -32,6 +36,13 @@ jobs:
             type=semver,pattern={{version}},value=${{ matrix.ref }},enable=${{ github.ref == 'refs/heads/main' }}
             type=semver,pattern={{major}}.{{minor}},value=${{ matrix.ref }},enable=${{ github.ref == 'refs/heads/main' }}
             type=semver,pattern={{major}},value=${{ matrix.ref }},enable=${{ github.ref == 'refs/heads/main' }}
+          labels: |
+            org.opencontainers.image.title=${{ matrix.pretty_name }}
+            maintainer=gabe565
+            org.opencontainers.image.vendor=gabe565
+            org.opencontainers.image.source=https://github.com/${{ matrix.repo }}
+            org.opencontainers.image.version=${{ matrix.ref }}
+            org.opencontainers.image.licenses=${{ matrix.license }}
       - name: Set up Buildx
         uses: docker/setup-buildx-action@v3
       - name: Login to GitHub Container Registry
