@@ -17,7 +17,7 @@ jobs:
             pretty_name: Stable Diffusion Web UI
             license: AGPL-3.0
             repo: AUTOMATIC1111/stable-diffusion-webui
-            ref: v1.10.0
+            ref: v1.10.1
           - name: comfyui
             pretty_name: ComfyUI
             license: GPL-3.0
